@@ -1,2 +1,2 @@
-# client-sdk
+# Invoice Desk SDK Library
 Official Invoice desk SDK
