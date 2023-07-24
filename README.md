@@ -26,8 +26,7 @@ $ pnpm add @invoicedesk/sdk
 ## Usage
 
 All invocations requires a JWT token to authenticate requests with the server.
-The client accepts the following parameters on initialization. You can
-find the full documentation at the [Invoice Desk Docs](https://invoicedesk.github.io/sdk-js/) page
+The client accepts the following parameters on initialization.
 
 
 | Parameter | Description                   | Required? | Default Value               |
