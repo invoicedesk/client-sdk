@@ -9,16 +9,19 @@ This SDK allows you to easily interact with invoice desk's APIs. It fully typed 
 
 ## Installation
 #### npm
+
 ```sh
 $ npm install @invoicedesk/sdk
 ```
 
 #### yarn
+
 ```sh
 $ yarn add @invoicedes/sdk
 ```
 
 #### pnpm
+
 ```sh
 $ pnpm add @invoicedesk/sdk
 ```
@@ -26,7 +29,8 @@ $ pnpm add @invoicedesk/sdk
 ## Usage
 
 All invocations requires a JWT token to authenticate requests with the server.
-The client accepts the following parameters on initialization.
+The client accepts the following parameters on initialization. You can
+find the full documentation at [Invoice Desk Docs](https://invoicedesk.github.io/sdk-js/) page
 
 
 | Parameter | Description                   | Required? | Default Value               |
