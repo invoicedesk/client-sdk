@@ -9,9 +9,8 @@
     "moduleResolution": "node",
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "declarationMap": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "dist",

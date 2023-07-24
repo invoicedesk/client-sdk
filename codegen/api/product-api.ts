@@ -25,17 +25,17 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { CreateProductRequestBody } from '../models';
+import { CreateProductPayload } from '../models';
 // @ts-ignore
 import { CreateProductResponse } from '../models';
 // @ts-ignore
-import { DeleteProductRequest } from '../models';
+import { DeleteProductPayload } from '../models';
 // @ts-ignore
 import { DeleteProductResponse } from '../models';
 // @ts-ignore
 import { ListProductsResponse } from '../models';
 // @ts-ignore
-import { UpdateProductRequestBody } from '../models';
+import { UpdateProductPayload } from '../models';
 // @ts-ignore
 import { UpdateProductResponse } from '../models';
 /**
@@ -47,15 +47,15 @@ export const ProductApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Add a new product to a company
          * @summary Add product
-         * @param {CreateProductRequestBody} createProductRequestBody 
+         * @param {CreateProductPayload} createProductPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create a product
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createProduct: async (createProductRequestBody: CreateProductRequestBody, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createProductRequestBody' is not null or undefined
-            assertParamExists('createProduct', 'createProductRequestBody', createProductRequestBody)
+        createProduct: async (createProductPayload: CreateProductPayload, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createProductPayload' is not null or undefined
+            assertParamExists('createProduct', 'createProductPayload', createProductPayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('createProduct', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -81,7 +81,7 @@ export const ProductApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createProductRequestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createProductPayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -91,16 +91,16 @@ export const ProductApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Remove a product from a company.
          * @summary Remove a product
-         * @param {DeleteProductRequest} deleteProductRequest 
+         * @param {DeleteProductPayload} deleteProductPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create a product
          * @param {string} productId Product ID to delete
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteProduct: async (deleteProductRequest: DeleteProductRequest, accountId: string, companyId: string, productId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'deleteProductRequest' is not null or undefined
-            assertParamExists('deleteProduct', 'deleteProductRequest', deleteProductRequest)
+        deleteProduct: async (deleteProductPayload: DeleteProductPayload, accountId: string, companyId: string, productId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'deleteProductPayload' is not null or undefined
+            assertParamExists('deleteProduct', 'deleteProductPayload', deleteProductPayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('deleteProduct', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -129,7 +129,7 @@ export const ProductApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(deleteProductRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteProductPayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -177,16 +177,16 @@ export const ProductApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Update an existing product for a company
          * @summary Update a product
-         * @param {UpdateProductRequestBody} updateProductRequestBody 
+         * @param {UpdateProductPayload} updateProductPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create a product
          * @param {string} productId Product ID to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateProduct: async (updateProductRequestBody: UpdateProductRequestBody, accountId: string, companyId: string, productId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'updateProductRequestBody' is not null or undefined
-            assertParamExists('updateProduct', 'updateProductRequestBody', updateProductRequestBody)
+        updateProduct: async (updateProductPayload: UpdateProductPayload, accountId: string, companyId: string, productId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateProductPayload' is not null or undefined
+            assertParamExists('updateProduct', 'updateProductPayload', updateProductPayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('updateProduct', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -215,7 +215,7 @@ export const ProductApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateProductRequestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateProductPayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -235,28 +235,28 @@ export const ProductApiFp = function(configuration?: Configuration) {
         /**
          * Add a new product to a company
          * @summary Add product
-         * @param {CreateProductRequestBody} createProductRequestBody 
+         * @param {CreateProductPayload} createProductPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create a product
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createProduct(createProductRequestBody: CreateProductRequestBody, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateProductResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createProduct(createProductRequestBody, accountId, companyId, options);
+        async createProduct(createProductPayload: CreateProductPayload, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateProductResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createProduct(createProductPayload, accountId, companyId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * Remove a product from a company.
          * @summary Remove a product
-         * @param {DeleteProductRequest} deleteProductRequest 
+         * @param {DeleteProductPayload} deleteProductPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create a product
          * @param {string} productId Product ID to delete
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteProduct(deleteProductRequest: DeleteProductRequest, accountId: string, companyId: string, productId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteProductResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteProduct(deleteProductRequest, accountId, companyId, productId, options);
+        async deleteProduct(deleteProductPayload: DeleteProductPayload, accountId: string, companyId: string, productId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteProductResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteProduct(deleteProductPayload, accountId, companyId, productId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -274,15 +274,15 @@ export const ProductApiFp = function(configuration?: Configuration) {
         /**
          * Update an existing product for a company
          * @summary Update a product
-         * @param {UpdateProductRequestBody} updateProductRequestBody 
+         * @param {UpdateProductPayload} updateProductPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create a product
          * @param {string} productId Product ID to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateProduct(updateProductRequestBody: UpdateProductRequestBody, accountId: string, companyId: string, productId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateProductResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProduct(updateProductRequestBody, accountId, companyId, productId, options);
+        async updateProduct(updateProductPayload: UpdateProductPayload, accountId: string, companyId: string, productId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateProductResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProduct(updateProductPayload, accountId, companyId, productId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -303,7 +303,7 @@ export const ProductApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         createProduct(requestParameters: ProductApiCreateProductRequest, options?: AxiosRequestConfig): AxiosPromise<CreateProductResponse> {
-            return localVarFp.createProduct(requestParameters.createProductRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
+            return localVarFp.createProduct(requestParameters.createProductPayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
         },
         /**
          * Remove a product from a company.
@@ -313,7 +313,7 @@ export const ProductApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         deleteProduct(requestParameters: ProductApiDeleteProductRequest, options?: AxiosRequestConfig): AxiosPromise<DeleteProductResponse> {
-            return localVarFp.deleteProduct(requestParameters.deleteProductRequest, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(axios, basePath));
+            return localVarFp.deleteProduct(requestParameters.deleteProductPayload, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(axios, basePath));
         },
         /**
          * Get all products for a company
@@ -333,7 +333,7 @@ export const ProductApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         updateProduct(requestParameters: ProductApiUpdateProductRequest, options?: AxiosRequestConfig): AxiosPromise<UpdateProductResponse> {
-            return localVarFp.updateProduct(requestParameters.updateProductRequestBody, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(axios, basePath));
+            return localVarFp.updateProduct(requestParameters.updateProductPayload, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -346,10 +346,10 @@ export const ProductApiFactory = function (configuration?: Configuration, basePa
 export interface ProductApiCreateProductRequest {
     /**
      * 
-     * @type {CreateProductRequestBody}
+     * @type {CreateProductPayload}
      * @memberof ProductApiCreateProduct
      */
-    readonly createProductRequestBody: CreateProductRequestBody
+    readonly createProductPayload: CreateProductPayload
 
     /**
      * Account ID to which the company belongs
@@ -374,10 +374,10 @@ export interface ProductApiCreateProductRequest {
 export interface ProductApiDeleteProductRequest {
     /**
      * 
-     * @type {DeleteProductRequest}
+     * @type {DeleteProductPayload}
      * @memberof ProductApiDeleteProduct
      */
-    readonly deleteProductRequest: DeleteProductRequest
+    readonly deleteProductPayload: DeleteProductPayload
 
     /**
      * Account ID to which the company belongs
@@ -430,10 +430,10 @@ export interface ProductApiListProductsRequest {
 export interface ProductApiUpdateProductRequest {
     /**
      * 
-     * @type {UpdateProductRequestBody}
+     * @type {UpdateProductPayload}
      * @memberof ProductApiUpdateProduct
      */
-    readonly updateProductRequestBody: UpdateProductRequestBody
+    readonly updateProductPayload: UpdateProductPayload
 
     /**
      * Account ID to which the company belongs
@@ -473,7 +473,7 @@ export class ProductApi extends BaseAPI {
      * @memberof ProductApi
      */
     public createProduct(requestParameters: ProductApiCreateProductRequest, options?: AxiosRequestConfig) {
-        return ProductApiFp(this.configuration).createProduct(requestParameters.createProductRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
+        return ProductApiFp(this.configuration).createProduct(requestParameters.createProductPayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -485,7 +485,7 @@ export class ProductApi extends BaseAPI {
      * @memberof ProductApi
      */
     public deleteProduct(requestParameters: ProductApiDeleteProductRequest, options?: AxiosRequestConfig) {
-        return ProductApiFp(this.configuration).deleteProduct(requestParameters.deleteProductRequest, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(this.axios, this.basePath));
+        return ProductApiFp(this.configuration).deleteProduct(requestParameters.deleteProductPayload, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -509,6 +509,6 @@ export class ProductApi extends BaseAPI {
      * @memberof ProductApi
      */
     public updateProduct(requestParameters: ProductApiUpdateProductRequest, options?: AxiosRequestConfig) {
-        return ProductApiFp(this.configuration).updateProduct(requestParameters.updateProductRequestBody, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(this.axios, this.basePath));
+        return ProductApiFp(this.configuration).updateProduct(requestParameters.updateProductPayload, requestParameters.accountId, requestParameters.companyId, requestParameters.productId, options).then((request) => request(this.axios, this.basePath));
     }
 }

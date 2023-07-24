@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { LineItem } from './line-item';
+import { InvoiceLineItem } from './invoice-line-item';
 
 /**
  * 
@@ -91,10 +91,10 @@ export interface Invoice {
     'createdAt': string;
     /**
      * Line items of this invoice
-     * @type {Array<LineItem>}
+     * @type {Array<InvoiceLineItem>}
      * @memberof Invoice
      */
-    'lineItems': Array<LineItem>;
+    'lineItems': Array<InvoiceLineItem>;
     /**
      * Client to whom the invoice is raised
      * @type {object}

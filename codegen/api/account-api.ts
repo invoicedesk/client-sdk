@@ -27,7 +27,7 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { CreateApiTokenResponse } from '../models';
 // @ts-ignore
-import { Payload } from '../models';
+import { CreateTokenPayload } from '../models';
 /**
  * AccountApi - axios parameter creator
  * @export
@@ -37,14 +37,14 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Create an API access token with an expiry date
          * @summary Create API token
-         * @param {Payload} payload 
+         * @param {CreateTokenPayload} createTokenPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createApiToken: async (payload: Payload, accountId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createApiToken', 'payload', payload)
+        createApiToken: async (createTokenPayload: CreateTokenPayload, accountId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createTokenPayload' is not null or undefined
+            assertParamExists('createApiToken', 'createTokenPayload', createTokenPayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('createApiToken', 'accountId', accountId)
             const localVarPath = `/accounts/{accountId}/api-token`
@@ -67,7 +67,7 @@ export const AccountApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createTokenPayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -87,13 +87,13 @@ export const AccountApiFp = function(configuration?: Configuration) {
         /**
          * Create an API access token with an expiry date
          * @summary Create API token
-         * @param {Payload} payload 
+         * @param {CreateTokenPayload} createTokenPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createApiToken(payload: Payload, accountId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateApiTokenResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createApiToken(payload, accountId, options);
+        async createApiToken(createTokenPayload: CreateTokenPayload, accountId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateApiTokenResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createApiToken(createTokenPayload, accountId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -114,7 +114,7 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         createApiToken(requestParameters: AccountApiCreateApiTokenRequest, options?: AxiosRequestConfig): AxiosPromise<CreateApiTokenResponse> {
-            return localVarFp.createApiToken(requestParameters.payload, requestParameters.accountId, options).then((request) => request(axios, basePath));
+            return localVarFp.createApiToken(requestParameters.createTokenPayload, requestParameters.accountId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -127,10 +127,10 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
 export interface AccountApiCreateApiTokenRequest {
     /**
      * 
-     * @type {Payload}
+     * @type {CreateTokenPayload}
      * @memberof AccountApiCreateApiToken
      */
-    readonly payload: Payload
+    readonly createTokenPayload: CreateTokenPayload
 
     /**
      * Account ID to which the company belongs
@@ -156,6 +156,6 @@ export class AccountApi extends BaseAPI {
      * @memberof AccountApi
      */
     public createApiToken(requestParameters: AccountApiCreateApiTokenRequest, options?: AxiosRequestConfig) {
-        return AccountApiFp(this.configuration).createApiToken(requestParameters.payload, requestParameters.accountId, options).then((request) => request(this.axios, this.basePath));
+        return AccountApiFp(this.configuration).createApiToken(requestParameters.createTokenPayload, requestParameters.accountId, options).then((request) => request(this.axios, this.basePath));
     }
 }

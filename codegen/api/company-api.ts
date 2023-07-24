@@ -25,17 +25,17 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { CreateCompanyData } from '../models';
+// @ts-ignore
 import { CreateCompanyResponse } from '../models';
 // @ts-ignore
 import { GetCompanyResponse } from '../models';
 // @ts-ignore
 import { ListCompaniesResponse } from '../models';
 // @ts-ignore
-import { Payload } from '../models';
-// @ts-ignore
 import { SuccessResponse } from '../models';
 // @ts-ignore
-import { UpdateTaxRegistrationRequestBody } from '../models';
+import { UpdateCompanyPayload } from '../models';
 // @ts-ignore
 import { UpdateTaxRegistrationResponse } from '../models';
 /**
@@ -47,14 +47,14 @@ export const CompanyApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Add a new company to an existing account
          * @summary Add Company
-         * @param {Payload} payload 
+         * @param {CreateCompanyData} createCompanyData 
          * @param {string} accountId Account ID for which to create a company
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCompany: async (payload: Payload, accountId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'payload' is not null or undefined
-            assertParamExists('createCompany', 'payload', payload)
+        createCompany: async (createCompanyData: CreateCompanyData, accountId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createCompanyData' is not null or undefined
+            assertParamExists('createCompany', 'createCompanyData', createCompanyData)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('createCompany', 'accountId', accountId)
             const localVarPath = `/accounts/{accountId}/companies`
@@ -77,7 +77,7 @@ export const CompanyApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createCompanyData, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -235,15 +235,15 @@ export const CompanyApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Update tax registration of the company
-         * @param {UpdateTaxRegistrationRequestBody} updateTaxRegistrationRequestBody 
+         * @param {UpdateCompanyPayload} updateCompanyPayload 
          * @param {string} accountId Account ID for which to create a company
          * @param {string} companyId Company ID for for which the tax registrations has to be added
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTaxRegistration: async (updateTaxRegistrationRequestBody: UpdateTaxRegistrationRequestBody, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'updateTaxRegistrationRequestBody' is not null or undefined
-            assertParamExists('updateTaxRegistration', 'updateTaxRegistrationRequestBody', updateTaxRegistrationRequestBody)
+        updateTaxRegistration: async (updateCompanyPayload: UpdateCompanyPayload, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateCompanyPayload' is not null or undefined
+            assertParamExists('updateTaxRegistration', 'updateCompanyPayload', updateCompanyPayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('updateTaxRegistration', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -269,7 +269,7 @@ export const CompanyApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateTaxRegistrationRequestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateCompanyPayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -289,13 +289,13 @@ export const CompanyApiFp = function(configuration?: Configuration) {
         /**
          * Add a new company to an existing account
          * @summary Add Company
-         * @param {Payload} payload 
+         * @param {CreateCompanyData} createCompanyData 
          * @param {string} accountId Account ID for which to create a company
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createCompany(payload: Payload, accountId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateCompanyResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createCompany(payload, accountId, options);
+        async createCompany(createCompanyData: CreateCompanyData, accountId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateCompanyResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createCompany(createCompanyData, accountId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -348,14 +348,14 @@ export const CompanyApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update tax registration of the company
-         * @param {UpdateTaxRegistrationRequestBody} updateTaxRegistrationRequestBody 
+         * @param {UpdateCompanyPayload} updateCompanyPayload 
          * @param {string} accountId Account ID for which to create a company
          * @param {string} companyId Company ID for for which the tax registrations has to be added
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTaxRegistration(updateTaxRegistrationRequestBody: UpdateTaxRegistrationRequestBody, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateTaxRegistrationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTaxRegistration(updateTaxRegistrationRequestBody, accountId, companyId, options);
+        async updateTaxRegistration(updateCompanyPayload: UpdateCompanyPayload, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateTaxRegistrationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTaxRegistration(updateCompanyPayload, accountId, companyId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -376,7 +376,7 @@ export const CompanyApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         createCompany(requestParameters: CompanyApiCreateCompanyRequest, options?: AxiosRequestConfig): AxiosPromise<CreateCompanyResponse> {
-            return localVarFp.createCompany(requestParameters.payload, requestParameters.accountId, options).then((request) => request(axios, basePath));
+            return localVarFp.createCompany(requestParameters.createCompanyData, requestParameters.accountId, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a company and all it\'s related data
@@ -426,7 +426,7 @@ export const CompanyApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         updateTaxRegistration(requestParameters: CompanyApiUpdateTaxRegistrationRequest, options?: AxiosRequestConfig): AxiosPromise<UpdateTaxRegistrationResponse> {
-            return localVarFp.updateTaxRegistration(requestParameters.updateTaxRegistrationRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
+            return localVarFp.updateTaxRegistration(requestParameters.updateCompanyPayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -439,10 +439,10 @@ export const CompanyApiFactory = function (configuration?: Configuration, basePa
 export interface CompanyApiCreateCompanyRequest {
     /**
      * 
-     * @type {Payload}
+     * @type {CreateCompanyData}
      * @memberof CompanyApiCreateCompany
      */
-    readonly payload: Payload
+    readonly createCompanyData: CreateCompanyData
 
     /**
      * Account ID for which to create a company
@@ -537,10 +537,10 @@ export interface CompanyApiUpdateLogoRequest {
 export interface CompanyApiUpdateTaxRegistrationRequest {
     /**
      * 
-     * @type {UpdateTaxRegistrationRequestBody}
+     * @type {UpdateCompanyPayload}
      * @memberof CompanyApiUpdateTaxRegistration
      */
-    readonly updateTaxRegistrationRequestBody: UpdateTaxRegistrationRequestBody
+    readonly updateCompanyPayload: UpdateCompanyPayload
 
     /**
      * Account ID for which to create a company
@@ -573,7 +573,7 @@ export class CompanyApi extends BaseAPI {
      * @memberof CompanyApi
      */
     public createCompany(requestParameters: CompanyApiCreateCompanyRequest, options?: AxiosRequestConfig) {
-        return CompanyApiFp(this.configuration).createCompany(requestParameters.payload, requestParameters.accountId, options).then((request) => request(this.axios, this.basePath));
+        return CompanyApiFp(this.configuration).createCompany(requestParameters.createCompanyData, requestParameters.accountId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -633,6 +633,6 @@ export class CompanyApi extends BaseAPI {
      * @memberof CompanyApi
      */
     public updateTaxRegistration(requestParameters: CompanyApiUpdateTaxRegistrationRequest, options?: AxiosRequestConfig) {
-        return CompanyApiFp(this.configuration).updateTaxRegistration(requestParameters.updateTaxRegistrationRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
+        return CompanyApiFp(this.configuration).updateTaxRegistration(requestParameters.updateCompanyPayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
     }
 }

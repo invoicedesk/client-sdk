@@ -1,6 +1,6 @@
 import { ClientApi, CompanyApi, Configuration, InvoiceApi, ProductApi } from "../codegen";
 type Config = {
-  host: string;
+  host?: string;
   version?: string;
 };
 
@@ -11,9 +11,13 @@ export class InvoiceDesk {
   private invoiceApi: InvoiceApi;
   private sdkConfig: Configuration;
 
-  constructor(private config: Config) {
+  constructor(private config: Config = {
+    host: 'https://api.invoicedesk.app',
+    version: 'v1'
+  }) {
     this.sdkConfig = new Configuration({
-      basePath: `${config.host}/${config.version || 'v1'}`
+      basePath: `${config.host}/${config.version || 'v1'}`,
+      formDataCtor: FormData
     });
   }
 

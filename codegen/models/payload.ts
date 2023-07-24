@@ -21,22 +21,10 @@
  */
 export interface Payload {
     /**
-     * Name of the api token
+     * Product Id should not be empty
      * @type {string}
      * @memberof Payload
      */
-    'name': string;
-    /**
-     * Date when this token expires. This token will be automatically revoked beyond this date
-     * @type {string}
-     * @memberof Payload
-     */
-    'expiresAt'?: string;
-    /**
-     * Authorization permissions for the token
-     * @type {string}
-     * @memberof Payload
-     */
-    'abilities'?: string;
+    'productId': string;
 }
 

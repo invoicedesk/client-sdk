@@ -21,77 +21,46 @@
  */
 export interface LineItem {
     /**
-     * ID of the line item
+     * ID of the product or service being invoiced
      * @type {string}
      * @memberof LineItem
      */
-    'id': string;
+    'id'?: string;
     /**
-     * ID of the associated invoice
-     * @type {string}
-     * @memberof LineItem
-     */
-    'invoiceId': string;
-    /**
-     * ID of the associated product or service. If null, the product or service is not associated internally
-     * @type {string}
-     * @memberof LineItem
-     */
-    'itemId': string;
-    /**
-     * Type of line item.
-     * @type {string}
-     * @memberof LineItem
-     */
-    'itemType': LineItemItemTypeEnum;
-    /**
-     * Title of the line item
+     * Title of the item
      * @type {string}
      * @memberof LineItem
      */
     'title': string;
     /**
-     * Short description of the line item
+     * Short item description
      * @type {string}
      * @memberof LineItem
      */
-    'description': string;
+    'description'?: string;
     /**
-     * Price at which this item was invoiced
+     * Price of the line item. Must be indicated in lowest denomination of invoice currency.
      * @type {number}
      * @memberof LineItem
      */
     'price': number;
     /**
-     * Quantity of the invoiced item
+     * Quantity of the item being invoiced.
      * @type {number}
      * @memberof LineItem
      */
     'quantity': number;
     /**
-     * Order in which the item appears in the rendered invoice
+     * Order in which the item will appear in the rendered invoice.      If not specified, the sort order will be inferred based on its position in      the array of line items
      * @type {number}
      * @memberof LineItem
      */
-    'sortOrder': number;
+    'sortOrder'?: number;
     /**
-     * Any associated metadata when the invoice was created
+     * Any metadata attached to this line item.
      * @type {object}
      * @memberof LineItem
      */
-    'metadata': object;
-    /**
-     * Timestamp of line item creation
-     * @type {string}
-     * @memberof LineItem
-     */
-    'createdAt': string;
+    'metadata'?: object;
 }
-
-export const LineItemItemTypeEnum = {
-    Product: 'product'
-} as const;
-
-export type LineItemItemTypeEnum = typeof LineItemItemTypeEnum[keyof typeof LineItemItemTypeEnum];
-
 

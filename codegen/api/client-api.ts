@@ -25,7 +25,7 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { CreateClientRequestBody } from '../models';
+import { CreateClientPayload } from '../models';
 // @ts-ignore
 import { CreateClientResponse } from '../models';
 // @ts-ignore
@@ -35,7 +35,7 @@ import { GetClientResponse } from '../models';
 // @ts-ignore
 import { ListClientsResponse } from '../models';
 // @ts-ignore
-import { UpdateClientRequestBody } from '../models';
+import { UpdateClientData } from '../models';
 // @ts-ignore
 import { UpdateClientResponse } from '../models';
 /**
@@ -47,15 +47,15 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Add a new client to a company
          * @summary Add client
-         * @param {CreateClientRequestBody} createClientRequestBody 
+         * @param {CreateClientPayload} createClientPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to add a client
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createClient: async (createClientRequestBody: CreateClientRequestBody, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createClientRequestBody' is not null or undefined
-            assertParamExists('createClient', 'createClientRequestBody', createClientRequestBody)
+        createClient: async (createClientPayload: CreateClientPayload, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createClientPayload' is not null or undefined
+            assertParamExists('createClient', 'createClientPayload', createClientPayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('createClient', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -81,7 +81,7 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createClientRequestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createClientPayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -227,16 +227,16 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Update an existing client for a company
          * @summary Update a client
-         * @param {UpdateClientRequestBody} updateClientRequestBody 
+         * @param {UpdateClientData} updateClientData 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to update a client
          * @param {string} clientId Client ID to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateClient: async (updateClientRequestBody: UpdateClientRequestBody, accountId: string, companyId: string, clientId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'updateClientRequestBody' is not null or undefined
-            assertParamExists('updateClient', 'updateClientRequestBody', updateClientRequestBody)
+        updateClient: async (updateClientData: UpdateClientData, accountId: string, companyId: string, clientId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateClientData' is not null or undefined
+            assertParamExists('updateClient', 'updateClientData', updateClientData)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('updateClient', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -265,7 +265,7 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateClientRequestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateClientData, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -285,14 +285,14 @@ export const ClientApiFp = function(configuration?: Configuration) {
         /**
          * Add a new client to a company
          * @summary Add client
-         * @param {CreateClientRequestBody} createClientRequestBody 
+         * @param {CreateClientPayload} createClientPayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to add a client
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createClient(createClientRequestBody: CreateClientRequestBody, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateClientResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createClient(createClientRequestBody, accountId, companyId, options);
+        async createClient(createClientPayload: CreateClientPayload, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateClientResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createClient(createClientPayload, accountId, companyId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -338,15 +338,15 @@ export const ClientApiFp = function(configuration?: Configuration) {
         /**
          * Update an existing client for a company
          * @summary Update a client
-         * @param {UpdateClientRequestBody} updateClientRequestBody 
+         * @param {UpdateClientData} updateClientData 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to update a client
          * @param {string} clientId Client ID to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateClient(updateClientRequestBody: UpdateClientRequestBody, accountId: string, companyId: string, clientId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateClientResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateClient(updateClientRequestBody, accountId, companyId, clientId, options);
+        async updateClient(updateClientData: UpdateClientData, accountId: string, companyId: string, clientId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateClientResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateClient(updateClientData, accountId, companyId, clientId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -367,7 +367,7 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          * @throws {RequiredError}
          */
         createClient(requestParameters: ClientApiCreateClientRequest, options?: AxiosRequestConfig): AxiosPromise<CreateClientResponse> {
-            return localVarFp.createClient(requestParameters.createClientRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
+            return localVarFp.createClient(requestParameters.createClientPayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
         },
         /**
          * Remove a client from a company.
@@ -407,7 +407,7 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          * @throws {RequiredError}
          */
         updateClient(requestParameters: ClientApiUpdateClientRequest, options?: AxiosRequestConfig): AxiosPromise<UpdateClientResponse> {
-            return localVarFp.updateClient(requestParameters.updateClientRequestBody, requestParameters.accountId, requestParameters.companyId, requestParameters.clientId, options).then((request) => request(axios, basePath));
+            return localVarFp.updateClient(requestParameters.updateClientData, requestParameters.accountId, requestParameters.companyId, requestParameters.clientId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -420,10 +420,10 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
 export interface ClientApiCreateClientRequest {
     /**
      * 
-     * @type {CreateClientRequestBody}
+     * @type {CreateClientPayload}
      * @memberof ClientApiCreateClient
      */
-    readonly createClientRequestBody: CreateClientRequestBody
+    readonly createClientPayload: CreateClientPayload
 
     /**
      * Account ID to which the company belongs
@@ -539,10 +539,10 @@ export interface ClientApiListClientsRequest {
 export interface ClientApiUpdateClientRequest {
     /**
      * 
-     * @type {UpdateClientRequestBody}
+     * @type {UpdateClientData}
      * @memberof ClientApiUpdateClient
      */
-    readonly updateClientRequestBody: UpdateClientRequestBody
+    readonly updateClientData: UpdateClientData
 
     /**
      * Account ID to which the company belongs
@@ -582,7 +582,7 @@ export class ClientApi extends BaseAPI {
      * @memberof ClientApi
      */
     public createClient(requestParameters: ClientApiCreateClientRequest, options?: AxiosRequestConfig) {
-        return ClientApiFp(this.configuration).createClient(requestParameters.createClientRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
+        return ClientApiFp(this.configuration).createClient(requestParameters.createClientPayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -630,6 +630,6 @@ export class ClientApi extends BaseAPI {
      * @memberof ClientApi
      */
     public updateClient(requestParameters: ClientApiUpdateClientRequest, options?: AxiosRequestConfig) {
-        return ClientApiFp(this.configuration).updateClient(requestParameters.updateClientRequestBody, requestParameters.accountId, requestParameters.companyId, requestParameters.clientId, options).then((request) => request(this.axios, this.basePath));
+        return ClientApiFp(this.configuration).updateClient(requestParameters.updateClientData, requestParameters.accountId, requestParameters.companyId, requestParameters.clientId, options).then((request) => request(this.axios, this.basePath));
     }
 }

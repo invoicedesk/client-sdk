@@ -18,7 +18,7 @@
 import { Invoice } from './invoice';
 // May contain unused imports in some cases
 // @ts-ignore
-import { LineItem } from './line-item';
+import { InvoiceLineItem } from './invoice-line-item';
 
 /**
  * @type CreateInvoiceResponseData

@@ -25,7 +25,7 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { CreateInvoiceRequestBody } from '../models';
+import { CreateInvoicePayload } from '../models';
 // @ts-ignore
 import { CreateInvoiceResponse } from '../models';
 // @ts-ignore
@@ -41,15 +41,15 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Raise an invoice for a company
          * @summary Create invoice
-         * @param {CreateInvoiceRequestBody} createInvoiceRequestBody 
+         * @param {CreateInvoicePayload} createInvoicePayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create an invoice
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInvoice: async (createInvoiceRequestBody: CreateInvoiceRequestBody, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createInvoiceRequestBody' is not null or undefined
-            assertParamExists('createInvoice', 'createInvoiceRequestBody', createInvoiceRequestBody)
+        createInvoice: async (createInvoicePayload: CreateInvoicePayload, accountId: string, companyId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createInvoicePayload' is not null or undefined
+            assertParamExists('createInvoice', 'createInvoicePayload', createInvoicePayload)
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('createInvoice', 'accountId', accountId)
             // verify required parameter 'companyId' is not null or undefined
@@ -68,6 +68,10 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -75,7 +79,7 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createInvoiceRequestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createInvoicePayload, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -112,6 +116,10 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
 
     
@@ -157,6 +165,10 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
             if (format !== undefined) {
                 localVarQueryParameter['format'] = format;
             }
@@ -200,6 +212,10 @@ export const InvoiceApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
             if (prefixes !== undefined) {
                 localVarQueryParameter['prefixes'] = prefixes;
             }
@@ -228,14 +244,14 @@ export const InvoiceApiFp = function(configuration?: Configuration) {
         /**
          * Raise an invoice for a company
          * @summary Create invoice
-         * @param {CreateInvoiceRequestBody} createInvoiceRequestBody 
+         * @param {CreateInvoicePayload} createInvoicePayload 
          * @param {string} accountId Account ID to which the company belongs
          * @param {string} companyId Company ID for which to create an invoice
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInvoice(createInvoiceRequestBody: CreateInvoiceRequestBody, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInvoiceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createInvoice(createInvoiceRequestBody, accountId, companyId, options);
+        async createInvoice(createInvoicePayload: CreateInvoicePayload, accountId: string, companyId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateInvoiceResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createInvoice(createInvoicePayload, accountId, companyId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -295,7 +311,7 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         createInvoice(requestParameters: InvoiceApiCreateInvoiceRequest, options?: AxiosRequestConfig): AxiosPromise<CreateInvoiceResponse> {
-            return localVarFp.createInvoice(requestParameters.createInvoiceRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
+            return localVarFp.createInvoice(requestParameters.createInvoicePayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes an invoice by ID
@@ -337,10 +353,10 @@ export const InvoiceApiFactory = function (configuration?: Configuration, basePa
 export interface InvoiceApiCreateInvoiceRequest {
     /**
      * 
-     * @type {CreateInvoiceRequestBody}
+     * @type {CreateInvoicePayload}
      * @memberof InvoiceApiCreateInvoice
      */
-    readonly createInvoiceRequestBody: CreateInvoiceRequestBody
+    readonly createInvoicePayload: CreateInvoicePayload
 
     /**
      * Account ID to which the company belongs
@@ -464,7 +480,7 @@ export class InvoiceApi extends BaseAPI {
      * @memberof InvoiceApi
      */
     public createInvoice(requestParameters: InvoiceApiCreateInvoiceRequest, options?: AxiosRequestConfig) {
-        return InvoiceApiFp(this.configuration).createInvoice(requestParameters.createInvoiceRequestBody, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
+        return InvoiceApiFp(this.configuration).createInvoice(requestParameters.createInvoicePayload, requestParameters.accountId, requestParameters.companyId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
