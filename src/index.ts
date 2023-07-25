@@ -1,5 +1,5 @@
 import { ClientApi, CompanyApi, Configuration, InvoiceApi, ProductApi } from "../codegen";
-type Config = {
+export type Config = {
   host?: string;
   version?: string;
 };
@@ -16,7 +16,7 @@ export class InvoiceDesk {
     version: 'v1'
   }) {
     this.sdkConfig = new Configuration({
-      basePath: `${config.host}/${config.version || 'v1'}`,
+      basePath: `${this.config.host}/${this.config.version || 'v1'}`,
       formDataCtor: FormData
     });
   }
@@ -58,3 +58,5 @@ export class InvoiceDesk {
     return this.invoiceApi;
   }
 }
+
+export * from "../codegen/";
