@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "target": "ES6",
+    "target": "es6",
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "dist",
-    "rootDir": ".",
+    "rootDir": "src",
     "moduleResolution": "node",
     "noUncheckedIndexedAccess": true,
-    "noEmit": true,
     "declarationMap": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": ["DOM", "es5", "es6"],
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "dist",

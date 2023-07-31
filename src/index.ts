@@ -1,62 +1,62 @@
-import { ClientApi, CompanyApi, Configuration, InvoiceApi, ProductApi } from "../codegen";
+import { InvoiceDeskClient, OpenAPI } from "./codegen";
+import { HttpClient } from "./http-client";
+
 export type Config = {
+  /** API host address.
+   * 
+   * @default https://api.invoicedesk.app
+  */
   host?: string;
+
+  /**
+   * API version.
+   * 
+   * @default v1
+   */
   version?: string;
 };
 
 export class InvoiceDesk {
-  private clientApi: ClientApi;
-  private companyApi: CompanyApi;
-  private productApi: ProductApi;
-  private invoiceApi: InvoiceApi;
-  private sdkConfig: Configuration;
+  private client: InvoiceDeskClient;
 
-  constructor(private config: Config = {
-    host: 'https://api.invoicedesk.app',
-    version: 'v1'
-  }) {
-    this.sdkConfig = new Configuration({
-      basePath: `${this.config.host}/${this.config.version || 'v1'}`,
-      formDataCtor: FormData
-    });
+  constructor({
+    host = 'https://api.invoicedesk.app',
+    version = 'v1',
+  }: Config) {
+    this.client = new InvoiceDeskClient({
+      BASE: `${host}/${version}`,
+    }, HttpClient);
   }
 
   get clients() {
-    if (this.clientApi) {
-      return this.clientApi;
-    }
-    
-    this.clientApi = new ClientApi(this.sdkConfig);
-    
-    return this.clientApi;
+    return this.client.client;
   }
 
   get companies() {
-    if(this.companyApi) {
-      return this.companyApi;
-    }
-
-    this.companyApi = new CompanyApi(this.sdkConfig);
-    return this.companyApi;
+    return this.client.company
   }
 
   get products() {
-    if(this.productApi) {
-      return this.productApi;
-    }
-
-    this.productApi = new ProductApi(this.sdkConfig);
-    return this.productApi;
+    return this.client.product;
   }
 
   get invoices() {
-    if(this.invoiceApi) {
-      return this.invoiceApi;
+    return this.client.invoice;
+  }
+
+  /**
+   * Set the auth token to be used for all requests.
+   *
+   * @param {string} token
+   * @throws {Error} if token is empty
+   */
+  setAuthToken(token: string) {
+    if (token.trim() === '') {
+      throw new Error('Token cannot be empty');
     }
 
-    this.invoiceApi = new InvoiceApi(this.sdkConfig);
-    return this.invoiceApi;
+    OpenAPI.TOKEN = token;
   }
 }
 
-export * from "../codegen/";
+export * from "./codegen/index";

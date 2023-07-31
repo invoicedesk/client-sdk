@@ -10,3 +10,5 @@ codegen/.npmignore
 codegen/.openapi-generator-ignore
 codegen/git_push.sh
 codegen/README.md
+
+*error.log

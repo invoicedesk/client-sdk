@@ -17,7 +17,7 @@ $ npm install @invoicedesk/sdk
 #### yarn
 
 ```sh
-$ yarn add @invoicedes/sdk
+$ yarn add @invoicedesk/sdk
 ```
 
 #### pnpm
