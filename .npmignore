@@ -1,7 +1,7 @@
 src
-codegen
 .changeset
 .github
 pnpm-lock.yml
 tsconfig.json
 docs
+*error.log
