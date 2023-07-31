@@ -16,7 +16,9 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "docs": "typedoc --excludePrivate --excludeProtected --hideParameterTypesInTitle --includeVersion --hideGenerator --hideParameterTypesInTitle --readme ./README.md --excludeReferences --plugin suika-docs-theme --theme suika-theme src/index.ts"
+    "docs": "typedoc --excludePrivate --excludeProtected --hideParameterTypesInTitle --includeVersion --hideGenerator --hideParameterTypesInTitle --readme ./README.md --excludeReferences --plugin suika-docs-theme --theme suika-theme src/index.ts",
+    "publish": "npm publish",
+    "release": "standard-version"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",
