@@ -3,7 +3,7 @@
 This is the official SDK for the Invoice Desk API. If you would like to learn more about Inovice Desk,
 please visit https://inovicedesk.app.
 
-This SDK is available on NPM at https://npmjs.com/@invoicedesk/sdk
+This SDK is available on NPM at https://npmjs.com/@invoicedesk/client
 
 This SDK allows you to easily interact with invoice desk's APIs. It fully typed requests, responses and entity objects so you don't have to refer to the documentation to get things rights.
 
@@ -11,19 +11,19 @@ This SDK allows you to easily interact with invoice desk's APIs. It fully typed 
 #### npm
 
 ```sh
-$ npm install @invoicedesk/sdk
+$ npm install @invoicedesk/client
 ```
 
 #### yarn
 
 ```sh
-$ yarn add @invoicedesk/sdk
+$ yarn add @invoicedesk/client
 ```
 
 #### pnpm
 
 ```sh
-$ pnpm add @invoicedesk/sdk
+$ pnpm add @invoicedesk/client
 ```
 
 ## Usage
@@ -39,7 +39,7 @@ find the full documentation at [Invoice Desk Docs](https://invoicedesk.github.io
 | version   | The version of the API to use | No        | v1                          |
 
 ```typescript
-import { InvoiceDesk } from '@invoicedesk/sdk';
+import { InvoiceDesk } from '@invoicedesk/client';
 
 const inoviceDesk = new InvoiceDesk();
 ```
