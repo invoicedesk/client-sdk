@@ -7,6 +7,7 @@ import type { OpenAPIConfig } from './core/OpenAPI';
 import { AxiosHttpRequest } from './core/AxiosHttpRequest';
 
 import { AccountAPI } from './services/AccountAPI';
+import { AuthenticationAPI } from './services/AuthenticationAPI';
 import { ClientAPI } from './services/ClientAPI';
 import { CompanyAPI } from './services/CompanyAPI';
 import { InvoiceAPI } from './services/InvoiceAPI';
@@ -17,6 +18,7 @@ type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 export class InvoiceDeskClient {
 
   public readonly account: AccountAPI;
+  public readonly authentication: AuthenticationAPI;
   public readonly client: ClientAPI;
   public readonly company: CompanyAPI;
   public readonly invoice: InvoiceAPI;
@@ -38,6 +40,7 @@ export class InvoiceDeskClient {
     });
 
     this.account = new AccountAPI(this.request);
+    this.authentication = new AuthenticationAPI(this.request);
     this.client = new ClientAPI(this.request);
     this.company = new CompanyAPI(this.request);
     this.invoice = new InvoiceAPI(this.request);

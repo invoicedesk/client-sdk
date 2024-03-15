@@ -44,6 +44,10 @@ export class InvoiceDesk {
     return this.client.invoice;
   }
 
+  get auth() {
+    return this.client.authentication;
+  }
+
   /**
    * Set the auth token to be used for all requests.
    *

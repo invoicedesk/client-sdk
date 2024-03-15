@@ -1,7 +1,7 @@
 # Official SDK for Invoice Desk API
 
 This is the official SDK for the Invoice Desk API. If you would like to learn more about Inovice Desk,
-please visit https://inovicedesk.app.
+please visit https://invoicedesk.app.
 
 This SDK is available on NPM at https://npmjs.com/@invoicedesk/client
 
