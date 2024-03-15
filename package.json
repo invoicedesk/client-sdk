@@ -1,6 +1,6 @@
 {
   "name": "@invoicedesk/client",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,6 +16,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
+    "codegen": "openapi --input ./api-spec.json --output ./src/codegen --useOptions --indent 2 --postfixServices API --client axios --name InvoiceDeskClient",
     "docs": "typedoc --excludePrivate --excludeProtected --hideParameterTypesInTitle --includeVersion --hideGenerator --hideParameterTypesInTitle --readme ./README.md --excludeReferences --plugin suika-docs-theme --theme suika-theme src/index.ts",
     "publish": "npm publish",
     "release": "standard-version"
